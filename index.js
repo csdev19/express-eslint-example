@@ -8,7 +8,7 @@ var app = express();
 app.get('/', function (req, res) {
   var importando = require('./utils');
 
-  var msj = "Que tal"
+  var msj = "Que tal";
   let saludo = 'Hello World!';
 
   if (!saludo) {
@@ -29,28 +29,28 @@ app.get('/pokemones', function (req, res) {
   var estaVariableSe_llena_si_es_que_trae_dataElServicio = false;
   axios.get(`${pokeruta}`)
     .then(response => {
-    console.log("response", response.data)
-          pokemones = response.data
-if (pokemones) {
-estaVariableSe_llena_si_es_que_trae_dataElServicio = true;
-}
-else {
-estaVariableSe_llena_si_es_que_trae_dataElServicio = false
-}
+      console.log("response", response.data);
+      pokemones = response.data;
+      if (pokemones) {
+        estaVariableSe_llena_si_es_que_trae_dataElServicio = true;
+      }
+      else {
+        estaVariableSe_llena_si_es_que_trae_dataElServicio = false;
+      }
 
-                  console.log("estaVariableSe_llena_si_es_que_trae_dataElServicio", estaVariableSe_llena_si_es_que_trae_dataElServicio)
-                  if (estaVariableSe_llena_si_es_que_trae_dataElServicio) {
-                    pokemones = pokemones.game_indices
-                    pokemones.length = 2;res.send(pokemones);
-                  } else {
-                    res.send('el stock esta vacio');
-                  }
+      console.log("estaVariableSe_llena_si_es_que_trae_dataElServicio", estaVariableSe_llena_si_es_que_trae_dataElServicio);
+      if (estaVariableSe_llena_si_es_que_trae_dataElServicio) {
+        pokemones = pokemones.game_indices;
+        pokemones.length = 2;res.send(pokemones);
+      } else {
+        res.send('el stock esta vacio');
+      }
 
     })
     .catch(error => {
       console.log(err);
 
-      res.status(500).send('error')
+      res.status(500).send('error');
     });
 
 });
